@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="./logo.png" />
+  <link rel="stylesheet" href="./index.css" />
+  <title>IC - Online</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5413677611697127"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="playbody">
+  <header>
+    <img onclick="history.back()" class="backicon" src="./icon/back.png" alt="">
+    <img src="./logo.png" alt="" />
+  </header>
+  <div class="detailimg">
+    <div class="blurbox"></div>
+    <img id="thumbImg" src="" alt="">
+  </div>
+
+    <!-- ic.ishibox.com_display_01 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5413677611697127"
+        data-ad-slot="5857556512"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div class="descript">
+    <h3 class="title"></h3>
+    <div id="playBtn">play</div>
+  </div>
+  <p class="description"></p>
+</body>
+<!-- gtag -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RS033Y421"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-3RS033Y421');
+</script>
+
+<script>
+  // 获取 URL 参数
+  const params = new URLSearchParams(window.location.search);
+  // 解析参数值
+  const details = {
+    description: params.get('description') || 'No description available',
+    guid: params.get('guid') || '',
+    link: params.get('url') || '#',
+    pubDate: params.get('pubDate') || '',
+    tags: params.get('tags') || 'No tags',
+    thumb: params.get('thumb') || './default.jpg',
+    title: params.get('title') || 'Untitled',
+  };
+  // 渲染数据到页面
+  document.querySelector(".title").textContent = details.title;
+  document.querySelector(".description").textContent = details.description;
+  document.getElementById("thumbImg").src = details.thumb;
+  const blurbox = document.querySelector(".blurbox");
+  blurbox.style.backgroundImage = `url(${details.thumb})`;
+
+  // 添加点击事件到 play 按钮
+  const playBtn = document.getElementById("playBtn")
+  playBtn.innerHTML = 'play'
+  playBtn.addEventListener("click", function () {
+    console.log(details.link)
+    if (playBtn.innerHTML == 'playing...') return;
+    window.location.href = details.link;
+    playBtn.innerHTML = 'playing...'
+  });
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RS033Y421"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3RS033Y421');
+</script>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="./logo.png" />
+  <link rel="stylesheet" href="./index.css" />
+  <title>IC - Online</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5413677611697127"
+      crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div id='adop_bfd'
+    style='display:block;width:100%;position:fixed;bottom:0px;right:0px;z-index:999;text-align:center;background:rgb(255, 255, 255, 0.85);box-shadow:rgba(0, 0, 0, 0.25) 0px 0px 7px;border-top:4px solid #353535;'>
+
+    <span id='adop_banner_x'
+      style='position:absolute;bottom:100%;right:0;padding:2px 8px;background:#ff0000;font-size:12px;color:#ffffff;border-bottom:4px solid #353535;'>X</span>
+    <script>let adop_closebfd = function () { document.getElementById('adop_bfd').style.display = 'none'; }; document.getElementById('adop_banner_x').addEventListener('click', adop_closebfd);</script>
+  </div>
+
+  <header>
+    <img style="display: none;" class="backicon" src="./icon/back.png" alt="">
+    <img src="./logo.png" alt="" />
+  </header>
+
+    <!-- ic.ishibox.com_display_01 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5413677611697127"
+        data-ad-slot="5857556512"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+  <div class="container">
+    <div class="banner">
+      <img src="./banner.png" alt="" />
+    </div>
+
+
+    <div class="menubox">
+      <div id="menu" class="menu">
+        <img src="./icon/menu.png" alt="" />
+        <p>Classification</p>
+      </div>
+      <div class="search">
+        <img src="./icon/search.png" alt="" />
+        <input type="text" placeholder="Search" />
+      </div>
+    </div>
+
+
+    <!-- 搜索框 -->
+    <section style="display: none;" id="section-search">
+      <div class="section-title">
+        <img src="./icon/3.png" alt="" />
+        <h2>Search Result</h2>
+      </div>
+      <div class="game-grid"></div>
+    </section>
+
+    <section id="section-hot">
+      <div class="section-title">
+        <img src="./icon/3.png" alt="" />
+        <h2>Hot</h2>
+      </div>
+      <div class="game-grid"></div>
+    </section>
+
+    <section id="section-new">
+      <div class="section-title">
+        <img src="./icon/6.png" alt="" />
+        <h2>New</h2>
+      </div>
+      <div class="scroll-new">
+      </div>
+    </section>
+    <!-- loading -->
+    <!-- <div class="downloading">
+      <img src="./icon/loading.png" alt="" />
+      <p>loading...</p>
+    </div> -->
+    <!-- <div id="category"></div> -->
+
+    <footer>
+      <h3>About Us</h3>
+      <p>It is the user’s duty to ensure their content adheres to all legal requirements. The platform is not
+        responsible for content. Policy updates will be communicated to users, who must agree to continue use.</p>
+      <div class="Privacy">
+        <a href="./PrivacyPolicy.html">Privacy Policy</a>
+        <a href="./TermsofService.html">Terms-of Service</a>
+      </div>
+    </footer>
+    <div id="showPop">
+      <div id="rightPop" class="popflex">
+        <!-- <div onclick="event.stopPropagation();" class="popitem">
+            <img src="./icon/home.png" alt="" />
+            <span>Home</span>
+          </div>
+          <div class="popitem">
+            <img src="./icon/girls.png" alt="" />
+            <span>New</span>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+<!-- gtag -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RS033Y421"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-3RS033Y421');
+</script>
+
+<script type="module">
+  import { getGamesListApi} from './index.js'
+  // 入口函数
+  function main() {
+    // 获取hot和 new的数据
+    getGamesListApi({ num: 17 }).then(res => {
+      if (Array.isArray(res) && res.length >= 13) {
+        renderHotNode(res.slice(0, 4))
+        renderNewNode(res.slice(4, 13))
+      } else {
+        console.error('Invalid response format or insufficient data:', res)
+      }
+    })
+    // setDownLoading(true)
+    // setTimeout(() => {
+    //   fetchAllCategories(10).then(result => {
+    //     setDownLoading(false)
+    //     renderForFor(result);
+    //   }).catch(error => {
+    //     console.error('Error fetching categories:', error);
+    //   });
+    // }, 0)
+    // 监听搜索按钮
+    const searchBtn = document.querySelector('.search').querySelector('img')
+    const backicon = document.querySelector('.backicon')
+
+    searchBtn.addEventListener('click', () => {
+      const value = document.querySelector('.search').querySelector('input').value
+      if (value) {
+        searchValue(value)
+        openDisplay(false)
+      } else {
+        // 显示banner等
+        openDisplay(true)
+      }
+    })
+
+    backicon.addEventListener('click', () => {
+      openDisplay(true)
+    })
+
+    const menu = document.querySelector('#menu')
+    menu.addEventListener('click', () => {
+      openPop()
+    })
+    const showPop = document.querySelector('#showPop')
+    showPop.addEventListener('click', () => {
+      openPop()
+    })
+  }
+  // 渲染Hot节点
+  function renderHotNode(dataList) {
+    const gameGrid = document.querySelector("#section-hot").querySelector('.game-grid')
+    dataList.forEach(item => {
+      const gameItem = document.createElement("div");
+      gameItem.className = "game-item";
+      gameItem.innerHTML = `
+          <img src="${item.thumb}" alt="${item.title}" />
+          <div class="game-title">${item.title}</div>
+        `
+      gameItem.onclick = function () {
+        goPlay(item)
+      }
+      gameGrid.appendChild(gameItem)
+    })
+  }
+  // 渲染New节点
+  function renderNewNode(dataList) {
+    const gameGrid = document.querySelector("#section-new").querySelector('.scroll-new')
+    for (let i = 0; i < dataList.length; i += 3) {
+      const item1 = dataList[i];
+      const item2 = dataList[i + 1];
+      const item3 = dataList[i + 2];
+      if (item1 && item2 && item3) {
+        const gameItem = document.createElement("div");
+        gameItem.className = "game-flex";
+        gameItem.innerHTML = `
+            <div class="game-left">
+              <div class="game-item game-click">
+                <img src="${item1.thumb}" alt="Game 1" />
+                <div class="game-title">${item1.title}</div>
+              </div>
+              <div class="game-item game-click">
+                <img src="${item2.thumb}" alt="Game 2" />
+                <div class="game-title">${item2.title}</div>
+              </div>
+            </div>
+            <div class="game-right game-click">
+              <img src="${item3.thumb}" alt="Game 3" />
+              <div class="game-title">${item3.title}</div>
+            </div>
+          `
+        gameGrid.appendChild(gameItem)
+        gameItem.querySelectorAll('.game-click').forEach((item, nodei) => {
+          item.addEventListener('click', () => {
+            goPlay(dataList[nodei])
+          })
+        })
+      }
+    }
+  }
+  // 渲染嵌套分类节点
+  function renderForFor(dataList) {
+    const category = document.getElementById("category");
+    const rightPop = document.getElementById("rightPop");
+    let index = 0
+    for (let i in dataList) {
+      const data = dataList[i]
+      index += 1
+      // 创建并添加描述部分
+      const section = document.createElement("section");
+      section.innerHTML = `
+            <div id="section-${data.category}" class="section-title">
+              <img src='./icon/${index % 9}.png' alt="" />
+              <h2>${data.category}</h2>
+              <a href="#" class="view-all">View All ></a>
+            </div>
+            <div class="puzzle-grid">
+            </div>
+        `;
+      category.appendChild(section);
+
+      const moreElement = section.querySelector(".view-all");
+      moreElement.addEventListener("click", () => {
+        handleMore(data.category);
+      });
+
+      const puzzleGrid = section.querySelector(".puzzle-grid");
+      // 创建并添加列表部分
+      // 遍历 dataList[i] 并添加每个 item
+      data.games.forEach((item, index) => {
+        const puzzleItem = document.createElement("div");
+        puzzleItem.className = "puzzle-item";
+        puzzleItem.onclick = function () {
+          goPlay(item);
+        };
+        puzzleItem.innerHTML = `
+                <img src="${item.thumb}" alt="" />
+                <span>${item.title}</span>
+            `;
+        puzzleGrid.appendChild(puzzleItem);
+      });
+
+      // 创建添加弹出分类
+      const popitem = document.createElement("div");
+      popitem.className = "popitem";
+      popitem.onclick = function () {
+        handleMore(data.category);
+      };
+      popitem.innerHTML = `
+            <img src='./icon/${index % 9}.png' alt="" />
+            <span>${data.category}</span>
+        `;
+      popitem.addEventListener('click', () => {
+        // scrollToAchor(data.category);
+      })
+      rightPop.appendChild(popitem);
+    }
+  }
+  // 渲染 搜索 分类
+  function renderSearchList(dataList) {
+    const searchGird = document.querySelector('#section-search').querySelector('.game-grid')
+    searchGird.innerHTML = ''
+    dataList.forEach((item, index) => {
+      const gameItem = document.createElement('div')
+      gameItem.className = 'puzzle-item'
+      gameItem.onclick = function () {
+        goPlay(item);
+      }
+      gameItem.innerHTML = `
+          <img src="${item.thumb}" alt="" />
+          <span>${item.title}</span>
+        `
+      searchGird.appendChild(gameItem)
+    })
+  }
+  // 处理分类
+  function handleMore(type) {
+    console.log(type)
+    if (type) {
+      openDisplay(false)
+      const category = categories.findIndex(item => item == type)
+      console.log(category)
+      fetchGameData({ category, num: 21 }).then(result => {
+        renderSearchList(result)
+      })
+    }
+  }
+  // 处理搜索
+  function searchValue(name) {
+    fetchGameData({ name }).then(result => {
+      renderSearchList(result)
+      // renderSearch
+    })
+    // 隐藏多余元素动画
+  }
+  // 搜索DOM控制
+  function openDisplay(isDisplay) {
+    const bannerImg = document.querySelector('.banner').querySelector('img')
+    const sectionHot = document.querySelector('#section-hot')
+    const sectionNew = document.querySelector('#section-new')
+    const category = document.querySelector('#category')
+    const footer = document.querySelector('#section-search')
+    const backicon = document.querySelector('.backicon')
+    bannerImg.style.height = `${isDisplay ? 'auto' : '0'}`
+    sectionHot.style.display = `${isDisplay ? 'block' : 'none'}`
+    sectionNew.style.display = `${isDisplay ? 'block' : 'none'}`
+    category.style.display = `${isDisplay ? 'block' : 'none'}`
+    footer.style.display = `${isDisplay ? 'none' : 'block'}`
+    backicon.style.display = `${isDisplay ? 'none' : 'block'}`
+  }
+  // 嵌套分类加载loading
+  function setDownLoading(isLoading) {
+    const downLoading = document.querySelector(".downloading")
+    downLoading.style.display = isLoading ? 'flex' : 'none'
+  }
+  // 锚点跳转
+  function scrollToAchor(type) {
+    openPop()
+    const section = document.getElementById(`section-${type}`);
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+  // play页面
+  function goPlay(item) {
+    if (!item) return;
+    const params = new URLSearchParams(item).toString();
+    window.location.href = `./play.html?${params}`;
+  }
+  // 控制弹框
+  function openPop() {
+    const showPop = document.querySelector("#showPop");
+    if (showPop.style.display == "block") {
+      document.body.style.overflow = "auto";
+      showPop.style.backgroundColor = "rgba(0,0,0,0)";
+      showPop.style.display = "none";
+    } else {
+      document.body.style.overflow = "hidden";
+      showPop.style.display = "block";
+      showPop.style.backgroundColor = "rgba(0,0,0,.7)";
+    }
+  }
+  main();
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3RS033Y421"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3RS033Y421');
+</script>
+</html>
