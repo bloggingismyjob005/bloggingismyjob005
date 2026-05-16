@@ -1,0 +1,379 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+}
+input {
+  display: block;
+  border: none;
+  background-color: transparent;
+}
+:root {
+  --background_color: #500724;
+  --background_top_main: #9d174d;
+
+  --color_main: #FFF;
+}
+body {
+  background-color: var(--background_color);
+
+  color: var(--color_main);
+}
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+header {
+  background-color: var(--background_top_main);
+  box-sizing: border-box;
+  padding: 12px 0;
+  position: relative;
+}
+header img {
+  width: 110px;
+  display: block;
+  margin: 0 auto;
+}
+header .backicon {
+  position: absolute;
+  width: 40px;
+  left: 12px;
+  top: 20px;
+  cursor: pointer;
+}
+.banner {
+  box-sizing: border-box;
+  padding: 0 12px;
+}
+.banner img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  /* min-height: 150px; */
+  transition: all .3s;
+  height: auto;
+}
+.menubox {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f08137;
+  padding: 12px;
+  border-radius: 6px;
+  width: 40%;
+}
+.menu img {
+  width: 16px;
+}
+.search {
+  border: 2px solid #494165;
+  border-radius: 6px;
+  position: relative;
+  width: calc(60% - 24px);
+  height: 100%;
+}
+.search img {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translate(0%, -50%);
+  width: 32px;
+  height: 32px;
+}
+/* search高度等于menu */
+.search input {
+  width: 100%;
+  text-indent: 4rem;
+  height: 41px;
+  color: var(--color_main);
+}
+/* input聚焦默认样式 */
+input:focus {
+  outline: none;
+}
+
+/* section */
+section {
+  margin-top: 12px;
+  box-sizing: border-box;
+  background-color: var(--background_top_main);
+  border-radius: 12px;
+  padding: 12px;
+}
+section .section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+section .section-title h2 {
+  font-size: 18px;
+  margin: 0;
+}
+section .section-title a {
+  color: var(--color_main);
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid #494165;
+  border-radius: 24px;
+  padding: 4px 8px;
+  width: 126px;
+  text-align: center;
+  display: block;
+  line-height: 2;
+  margin-left: auto;
+}
+.section-title img {
+  width: 32px;
+  height: 32px;
+  margin: 0 8px;
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.game-item {
+  overflow: hidden;
+}
+.game-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.game-title {
+  padding: 5px; 
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  /* 保证溢出隐藏 */
+  text-overflow: ellipsis;
+  /* 文本溢出省略号 */
+  white-space: nowrap;
+  /* 文本不换行 */
+}
+
+.game-flex {
+  display: flex;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 12px;
+  width: 100%;
+}
+.game-left {
+  flex: 1;
+}
+.game-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.game-right img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.game-right .game-title {
+  width: 100%;
+  /* 保证溢出隐藏 */
+  text-overflow: ellipsis;
+  /* 文本溢出省略号 */
+  white-space: nowrap;
+  /* 文本不换行 */
+  margin-top: auto;
+}
+
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.puzzle-item {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.puzzle-item img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  aspect-ratio: 11/12;  
+}
+.puzzle-item span {
+  display: block;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  /* 保证溢出隐藏 */
+  text-overflow: ellipsis;
+  /* 文本溢出省略号 */
+  white-space: nowrap;
+  /* 文本不换行 */
+}
+
+footer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 35px;
+  background-color: var(--background_item);
+  color: var(--color_shallow);
+}
+
+footer p {
+  margin-top: 12px;
+}
+
+.Privacy {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.Privacy a {
+  color: var(--color_shallow);
+}
+
+#showPop {
+  background-color: rgba(0, 0, 0, .9);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  transition: all,.3s;
+}
+.popflex {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 10% 0;
+}
+.popitem {
+  background: var(--background_top_main);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 12px;
+  width: 61.8%;
+  height: 50px;
+  box-sizing: border-box;
+  transition: all .3s;
+}
+.popitem img {
+  width: 28px;
+  height: 28px; 
+  margin-right: 12px;
+}
+
+.scroll-new {
+  display: block;
+  overflow: hidden;
+}
+.downloading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background_top_main);
+  color: var(--color_shallow);
+  font-size: 24px;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.downloading img {
+  width: 52px;
+  height: 52px;
+  margin-right: 12px;
+  animation: rotate 2s linear infinite;
+}
+/* play */
+.playbody {
+  background-color: var(--background_color);
+  color: var(--color_main);
+}
+.detailimg {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16/9;
+}
+.blurbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: blur(20px);
+}
+.detailimg img {
+  width: 60%;
+  max-height: 500px;
+  border-radius: 12px;
+}
+.descript {
+  margin-top: 40px;
+}
+.title {
+  text-align: center;
+}
+#playBtn {
+  margin: 40px auto;
+  width: 43%;
+  line-height: 40px;
+  border-radius:12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 24px;
+  background-color: #EF7A2D;
+}
+.description {
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-top: 20px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+@container (min-width: 600px) {
+  .item {
+    width: calc((100% - 40px) / 5);
+  }
+}
