@@ -1,1 +1,9 @@
 google.com, pub-5413677611697127, DIRECT, f08c47fec0942fa0
+google.com, Publication No. 9989685810655749, Reseller, f08c47fec0942fa0
+rubiconproject.com, 27264, Reseller, 0bfd66d529a55807
+rubiconproject.com, 27266, Reseller, 0bfd66d529a55807
+inmobi.com, 1e3bbb89cc344ba784515ed0d153e966, Reseller, 83e75a7ae333ca9d4
+pubmatic.com, 159855, Reseller, 5d62403b186f2ace
+xandr.com, 17189, Reseller
+appnexus.com, 17189, Reseller
+adster.tech, 23353473516, Direct
