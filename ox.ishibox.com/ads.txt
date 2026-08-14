@@ -7,3 +7,5 @@ pubmatic.com, 159855, Reseller, 5d62403b186f2ace
 xandr.com, 17189, Reseller
 appnexus.com, 17189, Reseller
 adster.tech, 23353473516, Direct
+intellectscoop.com, 689, DIRECT
+google.com, pub-9782910672185534, DIRECT, f08c47fec0942fa0
